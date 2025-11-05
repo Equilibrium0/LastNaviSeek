@@ -40,6 +40,10 @@ class Slskd:
             return 1
 
     def download_song(self, target):
+        if target == 1:
+            print("song not found")
+            return
+
         print(target)
         username, file = target
         self.slskd.transfers.enqueue(username=username, files=[file])
@@ -73,5 +77,6 @@ class Slskd:
 
 
 t = Slskd("http://127.0.0.1:5030", SLSKD_API_KEY)
-t.get_song("S3RL Catchit")
-
+songs = ["Cartridge1987 MFOS"]
+for song in songs:
+    t.get_song(song)
